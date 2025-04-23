@@ -2,29 +2,15 @@ import requests
 import os
 import logging
 from dotenv import load_dotenv, dotenv_values
-from setting import DOT_ENV_DIR, LOGGER_DIR
+from setting import DOT_ENV_DIR, REQUESTS_LOG_DIR
+from utils import setup_logger
 
 load_dotenv(DOT_ENV_DIR)
 os.getenv("NEWS_API")
 
 # logger conf
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-
-file_handler = logging.FileHandler(LOGGER_DIR)
-stream_handler = logging.StreamHandler()
-
-formatter = logging.Formatter("%(asctime)s:%(name)s:%(levelname)s:%(message)s")
-
-file_handler.setLevel(logging.DEBUG)
-file_handler.setFormatter(formatter)
-
-stream_handler.setLevel(logging.DEBUG)
-stream_handler.setFormatter(formatter)
-
-logger.addHandler(file_handler)
-logger.addHandler(stream_handler)
-
+logger = setup_logger(f_path=REQUESTS_LOG_DIR,
+                        name=__name__)
 
 
 

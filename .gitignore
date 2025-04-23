@@ -1,2 +1,4 @@
 ./manage.txt
 __pycache__
+news/__pycache__
+data/logs
