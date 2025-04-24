@@ -1,8 +1,8 @@
 from os import path
 import logging
 from typing import TextIO
-from setting import CONTEXT_MGR_LOG_DIR
-from utils import setup_logger
+from setting.directories import CONTEXT_MGR_LOG_DIR
+from utils.utils import setup_logger
 
 logger = setup_logger(f_path=CONTEXT_MGR_LOG_DIR,
                         name=__name__,

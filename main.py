@@ -1,25 +1,20 @@
-import os
-import logging
 import pickle
-from dotenv import load_dotenv
 from news.api_handler import APIHandler
-from context_manager import PickleContextManager
-from setting import NEWS_DATA_DIR, REQUESTS_LOG_DIR
-from utils import setup_logger
+from utils.context_manager import PickleContextManager
+from setting.directories import NEWS_DATA_DIR
+from setting.argument_processor import Argument
 
 
-# loading evnierments
-load_dotenv()
-news_api = os.getenv("NEWS_API")
+# config args
+args_handler = Argument()
+dict_args = args_handler.get_dict_args()
 
-#init handlers
-api_handler = APIHandler(news_api)
-
-# logger conf logger = setup_logger(f_path=)
+#init api handlers
+api_handler = APIHandler()
 
 
 #sending GET request
-api_handler.get_req()
+api_handler.get_req(api=args_handler.raw_url, params=args_handler.dict_args)
 status_code = api_handler.status_code
 
 if api_handler.status_code == 200:
