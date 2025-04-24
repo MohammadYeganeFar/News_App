@@ -1,6 +1,6 @@
 import logging
 import os
-from setting import CONTEXT_MGR_LOG_DIR
+from setting.directories import CONTEXT_MGR_LOG_DIR
 
 def create_file_if_not_exist(path):
     open(path, "a")
@@ -47,4 +47,5 @@ def setup_logger(*, f_path, file_handler_level:int=10,
     # my_logger.addHandler(stream_handler)
 
     return my_logger
+
 
